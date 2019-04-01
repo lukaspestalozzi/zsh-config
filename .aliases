@@ -1,0 +1,120 @@
+#
+# alias file
+#
+
+
+# ---------- Config files shortcut ---------- #
+alias zshconfig="$EDITOR $ZDOTDIR/.zshrc &"
+alias zshalias="$EDITOR $ZDOTDIR/.aliases &"
+alias i3config="$EDITOR $HOME/.config/i3/config &"
+alias i3statusconfig="$EDITOR $HOME/.config/i3status/conf &"
+
+
+# ---------- Monitor ---------- #
+alias monitor_setup="xrandr --output HDMI2 --left-of eDP1"
+
+
+# ---------- Auto SUDO ---------- #
+alias pacman='sudo pacman'
+alias journalctl='sudo journalctl'
+alias systemctl='sudo systemctl'
+
+# ---------- Package installation/deletion ---- #
+alias deletepackage='pacman -Rns'
+
+
+# ---------- System Upgrade ---------- #
+alias pacman-update-noconfirm='sudo pacman -Syu --noconfirm'
+alias yay-update-noconfirm='yay -Syu --noconfirm'
+alias yolo='yay-update-noconfirm'
+
+
+# ---------- most used commands ---------- #
+# ls
+alias ls='ls -sF --color=auto'
+alias ll='ls -lhas'
+alias la='ls -has'
+
+#cd
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+# Colorize the grep command output for ease of use (good for log files)##
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# df and du
+alias df="df -Tha --total"
+alias du="du -ach | sort -h"
+
+#ncdu (scan disk and show size)
+alias foldersize='ncdu'
+
+#tree (filesize, colors and append character)
+alias tree='tree -hCF'
+
+# Create parent directories on demand
+alias mkdir='mkdir -pv'
+
+# wget resume
+alias wget="wget -c"
+
+# git
+alias gita='git add .'
+alias gitcm='git commit -m'
+alias gitp='git push'
+alias gits='git status'
+
+# help
+autoload -Uz run-help
+unalias run-help
+alias help=run-help
+autoload -Uz run-help-git
+autoload -Uz run-help ip
+autoload -Uz run-help-sudo
+
+# screen
+alias screensaver_off="xset s off -dpms"
+
+# suspend
+alias suspend="systemctl suspend"
+
+# dmesg
+alias wtf=dmesg
+
+
+# ---------- Safety nets ---------- #
+## do not delete / or prompt if deleting more than 3 files at a time #
+alias rm='rm -I --preserve-root'
+## confirmation
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+## preventing changing perms on / #
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+
+# ---------- Own commands ---------- #
+# cpu performance
+alias cpu_set_performance='sudo cpupower frequency-set -g performance'
+alias cpu_show_frequency='watch -n1 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
+
+# crontab logs
+alias cron-logs='journalctl | grep cron'
+
+# pdf wordcount
+alias pdfwordcount='function _pdfwc(){ pdftotext $1 - | wc -w; };_pdfwc'
+
+# ----------- SSH connections ----------- #
+alias pi2B_ssh='ssh pi@192.168.1.251'
+alias pi3B_ssh='ssh pi@192.168.1.222'
+alias backup_p2B='ssh pi@192.168.1.251 "sudo dd if=/dev/mmcblk0 bs=1M" | gzip - | dd of=/home/lu/pibackups/pi2backup.gz'
+alias backup_p3B='ssh pi@192.168.1.222 "sudo dd if=/dev/mmcblk0 bs=1M" | gzip - | dd of=/home/lu/pibackups/pi3backup.gz'
+
