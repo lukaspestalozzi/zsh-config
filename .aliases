@@ -18,6 +18,8 @@ alias monitor_setup="xrandr --output HDMI2 --left-of eDP1"
 alias pacman='sudo pacman'
 alias journalctl='sudo journalctl'
 alias systemctl='sudo systemctl'
+alias please=sudo
+alias pls=sudo
 
 # ---------- Package installation/deletion ---- #
 alias deletepackage='pacman -Rns'
@@ -113,8 +115,16 @@ alias cron-logs='journalctl | grep cron'
 alias pdfwordcount='function _pdfwc(){ pdftotext $1 - | wc -w; };_pdfwc'
 
 # ----------- SSH connections ----------- #
-alias pi2B_ssh='ssh pi@192.168.1.251'
-alias pi3B_ssh='ssh pi@192.168.1.222'
-alias backup_p2B='ssh pi@192.168.1.251 "sudo dd if=/dev/mmcblk0 bs=1M" | gzip - | dd of=/home/lu/pibackups/pi2backup.gz'
-alias backup_p3B='ssh pi@192.168.1.222 "sudo dd if=/dev/mmcblk0 bs=1M" | gzip - | dd of=/home/lu/pibackups/pi3backup.gz'
+PI2=192.168.1.20
+PI3=192.168.1.222
+PI4=192.168.1.250
+alias pi2B_ssh='ssh pi@$PI2'
+alias pi3B_ssh='ssh pi@$PI3'
+alias pi4_ssh='ssh pi@$PI4'
+alias backup_pi2B='ssh pi@$PI2 "sudo dd if=/dev/mmcblk0 bs=1M" | gzip - | dd of=/home/lu/pibackups/pi2backup.gz'
+alias backup_pi3B='ssh pi@$PI3 "sudo dd if=/dev/mmcblk0 bs=1M" | gzip - | dd of=/home/lu/pibackups/pi3backup.gz'
+alias backup_pi4='ssh pi@$PI4 "sudo dd if=/dev/mmcblk0 bs=1M" | gzip - | dd of=/home/lu/pibackups/pi4backup.gz'
+
+alias copy_geth_metrics='scp pi@$PI4:/home/pi/geth/geth_metrics.csv ~/Downloads/geth_metrics.csv'
+
 

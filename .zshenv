@@ -10,6 +10,7 @@ fi
 # don't add something to path that is already there
 typeset -U path
 path=(~/.local/bin $path[@])
+path=(/opt/anaconda/bin $path[@])
 
 export MANPATH="/usr/local/man:$MANPATH"
 
