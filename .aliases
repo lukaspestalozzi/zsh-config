@@ -4,10 +4,10 @@
 
 
 # ---------- Config files shortcut ---------- #
-alias zshconfig="$EDITOR $ZDOTDIR/.zshrc &"
-alias zshalias="$EDITOR $ZDOTDIR/.aliases &"
-alias i3config="$EDITOR $HOME/.config/i3/config &"
-alias i3statusconfig="$EDITOR $HOME/.config/i3status/conf &"
+alias zshconfig="$EDITOR $ZDOTDIR/.zshrc"
+alias zshalias="$EDITOR $ZDOTDIR/.aliases"
+alias i3config="$EDITOR $HOME/.config/i3/config"
+alias i3statusconfig="$EDITOR $HOME/.config/i3status/conf"
 
 
 # ---------- Monitor ---------- #
@@ -113,6 +113,9 @@ alias cron-logs='journalctl | grep cron'
 
 # pdf wordcount
 alias pdfwordcount='function _pdfwc(){ pdftotext $1 - | wc -w; };_pdfwc'
+
+# Map CapsLock to CTRL
+alias capslock_to_ctrl='setxkbmap -option ctrl:nocaps'
 
 # ----------- SSH connections ----------- #
 PI2=192.168.1.20
